@@ -1,46 +1,37 @@
 /**
- * minecraft-pi tests.
+ * minecraft-pi-promise tests.
  *
- * @package minecraft-pi
- * @author Zachary Bruggeman <talkto@zachbruggeman.me>
+ * @package minecraft-pi-promise
+ * @author Lars Gregori <lars.gregori@gmail.com>
  */
 
 /**
  * Dependencies
  */
 var test = require('tap').test;
-var async = require('async');
 var Minecraft = require('./../lib/minecraft.js');
-var client, receivedData; 
 
-async.auto({
-	connect: function (callback) {
-		client = new Minecraft('192.168.1.89', 4711, callback); // To test for yourself, please edit this to point to your local pi server.
-	},
+var minecraft_server_name = '192.168.2.110';
+var minecraft_server_port = 4711;
 
-	data: ['connect', function (callback) {
-		client.getBlock(99999, 99999, 99999, function(data) {
-			receivedData = data.toString();
-			client.end();
-			callback();
-		});
-	}],
+var mc_connection;
 
-	test: ['connect', 'data', function (callback) {
-		test('Client connection', function(t) {
-			t.type(client.connection, 'object', 'The connection should be an object.');
-			t.end();
-		});
-
-		test('Receiving data', function(t) {
-			t.type(receivedData, 'string', 'A string of data should be returned.')
-			t.equals(receivedData, '0\n', 'Expected result.')
-			t.end();
-		});
-	}]
-}, function(err, obj) {
-	test('Catch errors', function(t) {
-		t.equal(err, null, 'Errors should be null.');
+test('connect', function(t) {
+	new Minecraft(minecraft_server_name, minecraft_server_port, 'test is running...')
+	.then(function(mc) {
+		mc_connection = mc;
+		t.type(mc_connection, 'object', 'The connection should be an object.');
 		t.end();
+	});
+});
+
+test('receive data', function(t) {
+	mc_connection.getBlockWithData(99999, 99999, 99999)
+	.then(function(receivedData) {
+        	t.type(receivedData, 'string', 'A string of data should be returned.')
+                t.equals(receivedData, '0,0\n', 'Expected result.')
+                t.end();
+		mc_connection.chat('done');
+		mc_connection.end();
 	});
 });

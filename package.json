@@ -1,16 +1,16 @@
 {
-  "author": "Zachary Bruggeman <zbruggeman@me.com>",
-  "name": "minecraft-pi",
-  "description": "A Node.js API for Minecraft: Pi Edition.",
+  "author": "Lars Gregori <lars.gregori@choas.net>",
+  "name": "minecraft-pi-promise",
+  "description": "Node.js API with Promises for Minecraft Raspberry Pi edition",
   "license": "MIT",
-  "version": "0.2.1",
-  "homepage": "https://github.com/remixz/minecraft-pi",
+  "version": "0.5.0",
+  "homepage": "https://github.com/choas/minecraft-pi-promise",
   "repository": {
     "type": "git",
-    "url": "https://github.com/remixz/minecraft-pi"
+    "url": "https://github.com/choas/minecraft-pi-promise"
   },
   "bugs": {
-    "url": "https://github.com/remixz/minecraft-pi/issues"
+    "url": "https://github.com/choas/minecraft-pi-promise/issues"
   },
   "main": "./lib/minecraft.js",
   "scripts": {
@@ -19,11 +19,10 @@
   "dependencies": {
   },
   "devDependencies": {
-    "tap": "~0.4.0",
-    "async": "~0.2.5"
+    "tap": "~0.4.0"
   },
   "optionalDependencies": {},
   "engines": {
-    "node": ">=0.8"
+    "node": ">=0.11.13"
   }
 }
