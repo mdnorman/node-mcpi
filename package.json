@@ -3,7 +3,7 @@
   "name": "minecraft-pi-promise",
   "description": "Node.js API with Promises for Minecraft Raspberry Pi edition",
   "license": "MIT",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "homepage": "https://github.com/choas/minecraft-pi-promise",
   "repository": {
     "type": "git",
@@ -16,8 +16,7 @@
   "scripts": {
     "test": "tap ./test/*.js"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "tap": "~0.4.0"
   },
