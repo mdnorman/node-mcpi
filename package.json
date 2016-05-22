@@ -1,27 +1,36 @@
 {
-  "author": "Lars Gregori <lars.gregori@choas.net>",
-  "name": "minecraft-pi-promise",
+  "author": "Michael Norman",
+  "name": "mcpi",
   "description": "Node.js API with Promises for Minecraft Raspberry Pi edition",
   "license": "MIT",
-  "version": "0.5.1",
-  "homepage": "https://github.com/choas/minecraft-pi-promise",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mdnorman/mcpi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/choas/minecraft-pi-promise"
+    "url": "https://github.com/mdnorman/mcpi"
   },
   "bugs": {
-    "url": "https://github.com/choas/minecraft-pi-promise/issues"
+    "url": "https://github.com/mdnorman/mcpi/issues"
   },
   "main": "./lib/minecraft.js",
   "scripts": {
-    "test": "tap ./test/*.js"
+    "checkstyle": "./node_modules/.bin/eslint ./",
+    "doc": "./node_modules/.bin/docco -o tmp/docs lib/minecraft.js",
+    "test": "node $NODE_DEBUG_OPTION ./test/index.js"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
-    "tap": "~0.4.0"
+    "docco": "^0.7.0",
+    "eslint": "^2.10.2",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-react": "^5.1.1",
+    "jasmine": "^2.4.1",
+    "jasmine-spec-reporter": "^2.4.0"
   },
   "optionalDependencies": {},
   "engines": {
-    "node": ">=0.11.13"
+    "npm": ">=3.8.9",
+    "node": ">=6.0.0"
   }
 }
