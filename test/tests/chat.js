@@ -4,21 +4,12 @@ const helpers = require('../utils/helpers');
 
 describe('Chat', () => {
   it('hello', (done) => {
-    helpers.connect()
-      .then(mc => {
-        return mc.send('hello')
-          .then(() => {
-            mc.end();
-          })
-          .catch(err => {
-            mc.end();
-            done.fail(err);
-          });
-      })
-      .then(() => {
-        done();
-      })
+    const mc = helpers.mc();
+    mc.send('hello')
+      .then(() => mc.close())
+      .then(done)
       .catch(err => {
+        mc.close();
         done.fail(err);
       });
   });

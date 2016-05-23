@@ -6,30 +6,21 @@ const Minecraft = require('../../lib/minecraft.js');
 
 describe('Connection', () => {
   it('success', (done) => {
-    helpers.connect()
-      .then(mc => {
-        expect(mc).not.toBeNull();
-        return mc.send('hello')
-          .then(() => {
-            mc.end();
-          })
-          .catch(err => {
-            mc.end();
-            done.fail(err);
-          });
-      })
-      .then(() => {
-        done();
-      })
+    const mc = helpers.mc();
+    mc.send('hello')
+      .then(() => mc.close())
+      .then(done)
       .catch(err => {
+        mc.close();
         done.fail(err);
       });
   });
 
   it('error', (done) => {
-    new Minecraft(helpers.minecraftServerName, helpers.minecraftServerPort+1)
+    const mc = new Minecraft(helpers.minecraftServerName, helpers.minecraftServerPort+1);
+    mc.send('hello')
       .then(mc => {
-        mc.end();
+        mc.close();
         done.fail(new Error('connection should have failed'));
       })
       .catch(err => {
