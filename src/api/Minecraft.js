@@ -270,36 +270,6 @@ class Minecraft {
       .then(data => data.split(',').map(idValue => Number(idValue)));
   }
 
-  // ### Camera Commands
-  /**
-   * Sets the player's camera mode.
-   *
-   * @param {CameraModes} cameraMode
-   *
-   * @returns {Promise}
-   */
-  setCameraMode(cameraMode) {
-    assert(cameraMode, 'cameraMode is required');
-    return this.send(`camera.mode.set${cameraMode}()`);
-  }
-
-  /**
-   * Sets the camera's position at the selected coordinates.
-   *
-   * @param {number} x
-   * @param {number} y
-   * @param {number} z
-   *
-   * @returns {Promise}
-   */
-  setCameraPos(x, y, z) {
-    assert(x !== undefined && x !== null, 'x is required');
-    assert(y !== undefined && y !== null, 'y is required');
-    assert(z !== undefined && z !== null, 'z is required');
-
-    return this.send(`camera.mode.setPos(${x},${y},${z})`);
-  }
-
   // ### Player commands
   /**
    * Gets the player's coordinates to the nearest block.

@@ -4,9 +4,9 @@ const helpers = require('../utils/helpers');
 const mcpi = require('../../src/');
 
 describe('Camera', () => {
-  it('setCameraMode', (done) => {
+  it('setMode', (done) => {
     const mc = helpers.mc();
-    mc.setCameraMode(mcpi.CameraModes.ThirdPerson)
+    mc.camera.setMode(mcpi.CameraModes.ThirdPerson)
       .then(() => mc.close())
       .then(done)
       .catch(err => {
@@ -15,10 +15,10 @@ describe('Camera', () => {
       });
   });
 
-  it('setCameraPos', (done) => {
+  it('setPos', (done) => {
     const mc = helpers.mc();
-    mc.setCameraMode(mcpi.CameraModes.ThirdPerson)
-      .then(() => mc.setCameraPos(0, 0, 0))
+    mc.camera.setMode(mcpi.CameraModes.ThirdPerson)
+      .then(() => mc.camera.setPos(0, 0, 0))
       .then(() => mc.close())
       .then(done)
       .catch(err => {

@@ -9,7 +9,7 @@ class Events {
    * @param {Minecraft} mc the Minecraft connection
    */
   constructor(mc) {
-    assert(mc, 'mc is require');
+    assert(mc, 'mc is required');
 
     this.mc = mc;
   }
