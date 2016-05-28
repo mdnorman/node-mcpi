@@ -353,16 +353,6 @@ class Minecraft {
     assert(key, 'key is required');
     return this.send(`player.setting(${key},${value}`);
   }
-
-  // ### Event commands
-  // These are in need of proper documentation. If you know about these, please send a pull request! :-)
-  eventsBlockHits() {
-    return this.sendReceive('events.block.hits()');
-  }
-
-  eventsClear() {
-    return this.send('events.clear()');
-  }
 }
 
 module.exports = Minecraft;

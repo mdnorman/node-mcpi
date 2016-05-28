@@ -4,12 +4,12 @@ const mcpi = require('../../src/');
 const helpers = require('../utils/helpers');
 
 describe('Events', () => {
-  it('eventsBlocksHits', (done) => {
+  it('blockHits', (done) => {
     const mc = helpers.mc();
 
-    mc.eventsBlockHits()
+    mc.events.blockHits()
       .then(data => {
-        console.log('eventsBlockHits data:', data);
+        console.log('blockHits data:', data);
       })
       .then(() => mc.close())
       .then(done)
@@ -19,10 +19,10 @@ describe('Events', () => {
       });
   });
 
-  it('eventsClear', (done) => {
+  it('clear', (done) => {
     const mc = helpers.mc();
 
-    mc.eventsClear()
+    mc.events.clear()
       .then(() => mc.close())
       .then(done)
       .catch(err => {
