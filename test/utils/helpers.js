@@ -10,7 +10,7 @@ const minecraftServerPort = 4711;
 const mc = () => new Minecraft(minecraftServerName, minecraftServerPort);
 
 const clearArea = (mc, x, y, z, distance) => 
-  mc.setBlocks(x - distance, y - distance, z - distance, x + distance, y + distance, z + distance, mcpi.Blocks.AIR);
+  mc.world.setBlocks(x - distance, y - distance, z - distance, x + distance, y + distance, z + distance, mcpi.Blocks.AIR);
 
 module.exports = {
   mc,

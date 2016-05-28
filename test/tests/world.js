@@ -4,11 +4,11 @@ const helpers = require('../utils/helpers');
 const mcpi = require('../../src/');
 
 describe('World', () => {
-  it('setWorldSetting', (done) => {
+  it('setProperty', (done) => {
     const mc = helpers.mc();
 
-    mc.setWorldSetting(mcpi.WorldSettings.WorldImmutable, true)
-      .then(() => mc.setWorldSetting(mcpi.WorldSettings.WorldImmutable, false))
+    mc.world.setProperty(mcpi.WorldSettings.WorldImmutable, true)
+      .then(() => mc.world.setProperty(mcpi.WorldSettings.WorldImmutable, false))
       .then(() => mc.close())
       .then(done)
       .catch(err => {

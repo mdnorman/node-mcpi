@@ -5,7 +5,7 @@ const helpers = require('../utils/helpers');
 describe('Checkpoint', () => {
   it('saveCheckpoint', (done) => {
     const mc = helpers.mc();
-    mc.saveCheckpoint()
+    mc.world.saveCheckpoint()
       .then(() => mc.close())
       .then(done)
       .catch(err => {
@@ -16,8 +16,8 @@ describe('Checkpoint', () => {
 
   it('restoreCheckpoint', (done) => {
     const mc = helpers.mc();
-    mc.saveCheckpoint()
-      .then(() => mc.restoreCheckpoint())
+    mc.world.saveCheckpoint()
+      .then(() => mc.world.restoreCheckpoint())
       .then(() => mc.close())
       .then(done)
       .catch(err => {
