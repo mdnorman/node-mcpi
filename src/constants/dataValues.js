@@ -1,5 +1,3 @@
-'use strict';
-
 const Normal = 0;
 
 const Coal = {

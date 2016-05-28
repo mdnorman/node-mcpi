@@ -1,5 +1,3 @@
-'use strict';
- 
 const WorldSettings = {
   WorldImmutable: 'world_immutable',
   NameTagsVisible: 'nametags_visible',

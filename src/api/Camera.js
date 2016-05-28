@@ -1,5 +1,3 @@
-'use strict';
-
 const assert = require('assert');
 
 class Camera {
@@ -10,7 +8,7 @@ class Camera {
    */
   constructor(mc) {
     assert(mc, 'mc is required');
-    
+
     this.mc = mc;
   }
 

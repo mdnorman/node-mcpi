@@ -1,5 +1,3 @@
-'use strict';
-
 const Blocks = require('./constants/blocks');
 const CameraModes = require('./constants/cameraModes');
 const Colors = require('./constants/colors');

@@ -1,5 +1,3 @@
-'use strict';
-
 const Blocks = {
   AIR: 0,
   STONE: 1,

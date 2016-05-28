@@ -1,7 +1,5 @@
-'use strict';
-
 module.exports = {
-  extends: './../.eslintrc.js',
+  extends: '../.eslintrc.js',
   env: {
     jasmine: true,
   },

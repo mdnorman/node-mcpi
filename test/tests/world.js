@@ -1,5 +1,3 @@
-'use strict';
-
 const helpers = require('../utils/helpers');
 const mcpi = require('../../src/');
 

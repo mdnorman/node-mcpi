@@ -1,5 +1,3 @@
-'use strict';
-
 const helpers = require('../utils/helpers');
 
 const Minecraft = require('../../src/').Minecraft;
@@ -17,9 +15,9 @@ describe('Connection', () => {
   });
 
   it('error', (done) => {
-    const mc = new Minecraft(helpers.minecraftServerName, helpers.minecraftServerPort+1);
+    const mc = new Minecraft(helpers.minecraftServerName, helpers.minecraftServerPort + 1);
     mc.chat.post('hello')
-      .then(mc => {
+      .then(() => {
         mc.close();
         done.fail(new Error('connection should have failed'));
       })

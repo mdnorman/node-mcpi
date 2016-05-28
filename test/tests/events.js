@@ -1,6 +1,3 @@
-'use strict';
-
-const mcpi = require('../../src/');
 const helpers = require('../utils/helpers');
 
 describe('Events', () => {
@@ -8,8 +5,8 @@ describe('Events', () => {
     const mc = helpers.mc();
 
     mc.events.blockHits()
-      .then(data => {
-        console.log('blockHits data:', data);
+      .then(data => { // eslint-disable-line no-unused-vars
+        // not sure what to do with this
       })
       .then(() => mc.close())
       .then(done)

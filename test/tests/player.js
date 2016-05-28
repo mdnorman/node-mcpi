@@ -1,5 +1,3 @@
-'use strict';
-
 const helpers = require('../utils/helpers');
 const mcpi = require('../../src/');
 
@@ -26,7 +24,7 @@ describe('Player', () => {
     const mc = helpers.mc();
 
     helpers.clearArea(mc, 0, 0, 0, 5)
-      .then(() => mc.world.setBlocks(-5, 0-1, -5, 5, 0-1, 5, mcpi.Blocks.STONE))
+      .then(() => mc.world.setBlocks(-5, -1, -5, 5, -1, 5, mcpi.Blocks.STONE))
       .then(() => mc.player.setTilePos(0, 0, 0))
       .then(() => mc.player.getTilePos())
       .then(pos => {
@@ -73,7 +71,7 @@ describe('Player', () => {
     const mc = helpers.mc();
 
     helpers.clearArea(mc, 0, 0, 0, 5)
-      .then(() => mc.world.setBlocks(-5, 0-1, -5, 5, 0-1, 5, mcpi.Blocks.STONE))
+      .then(() => mc.world.setBlocks(-5, -1, -5, 5, -1, 5, mcpi.Blocks.STONE))
       .then(() => mc.player.setPos(0, 0, 0))
       .then(() => mc.player.getPos())
       .then(pos => {

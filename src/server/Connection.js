@@ -1,5 +1,3 @@
-'use strict';
-
 const assert = require('assert');
 const net = require('net');
 const util = require('util');
@@ -20,12 +18,12 @@ class Connection {
     assert(host, 'host is required');
     assert(port, 'port is required');
 
-    this._callbacks = [];
-    this._isClosed = false;
+    this.callbacks = [];
+    this.isClosed = false;
 
     const self = this;
-    this._promise = new Promise((resolve, reject) => {
-      self._callbacks.push((err, data) => {
+    this.promise = new Promise((resolve, reject) => {
+      self.callbacks.push((err, data) => { // eslint-disable-line no-unused-vars
         if (err) {
           reject(err);
         }
@@ -33,12 +31,12 @@ class Connection {
         // ignore data
       });
 
-      const socket = net.connect({port: port, host: host}, () => {
-        self._callbacks.shift();
+      const socket = net.connect({ port, host }, () => {
+        self.callbacks.shift();
         resolve(socket);
       });
 
-      this._setupSocket(socket);
+      this.setupSocket(socket);
     });
   }
 
@@ -47,20 +45,19 @@ class Connection {
     assert(!this.closed, 'connection is closed');
 
     const self = this;
-    return this._promise.then(socket => {
-      return new Promise((resolve, reject) => {
-        self._pushPromiseCallback(resolve, reject);
+    return this.promise.then(socket =>
+      new Promise((resolve, reject) => {
+        self.pushPromiseCallback(resolve, reject);
         debuglog('Writing data:', data);
         socket.write(data, err => {
-          const callback = self._callbacks.shift();
+          const callback = self.callbacks.shift();
           if (err) {
             callback(err);
             return;
           }
           resolve();
         });
-      });
-    });
+      }));
   }
 
   writeAndRead(data) {
@@ -68,22 +65,21 @@ class Connection {
     assert(!this.closed, 'connection is closed');
 
     const self = this;
-    return this._promise.then(socket => {
-      return new Promise((resolve, reject) => {
-        self._pushPromiseCallback(resolve, reject);
+    return this.promise.then(socket =>
+      new Promise((resolve, reject) => {
+        self.pushPromiseCallback(resolve, reject);
         debuglog('Writing data for read:', data);
         socket.write(data, err => {
-          const callback = self._callbacks[0];
+          const callback = self.callbacks[0];
           if (err) {
             callback(err);
           }
         });
-      });
-    })
+      }));
   }
 
-  _pushPromiseCallback(resolve, reject) {
-    this._callbacks.push((err, data) => {
+  pushPromiseCallback(resolve, reject) {
+    this.callbacks.push((err, data) => {
       if (err) {
         reject(err);
         return;
@@ -93,45 +89,45 @@ class Connection {
     });
   }
 
-  _setupSocket(socket) {
+  setupSocket(socket) {
     assert(socket, 'socket is required');
 
     const self = this;
-    socket.on('error', function (err) {
+    socket.on('error', err => {
       debuglog('Socket error:', err);
 
-      const callback = self._callbacks.shift();
+      const callback = self.callbacks.shift();
       if (callback) {
         callback(err);
       }
     });
 
-    socket.on('data', function (data) {
+    socket.on('data', data => {
       debuglog(`Got data: ${data}`);
 
-      const callback = self._callbacks.shift();
+      const callback = self.callbacks.shift();
       if (callback) {
         callback(null, data);
       }
     });
 
-    socket.on('end', function () {
+    socket.on('end', () => {
       debuglog('Server disconnected.');
     });
-  };
+  }
 
   get closed() {
-    return this._isClosed;
+    return this.isClosed;
   }
 
   close() {
     if (this.closed) {
       return Promise.resolve();
     }
-    
+
     const self = this;
-    return this._promise.then(socket => {
-      self._isClosed = true;
+    return this.promise.then(socket => {
+      self.isClosed = true;
       socket.end();
     });
   }

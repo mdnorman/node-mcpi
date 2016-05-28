@@ -1,5 +1,3 @@
-'use strict';
-
 const assert = require('assert');
 
 class World {
@@ -29,10 +27,8 @@ class World {
     assert(z !== undefined && z !== null, 'z is required');
 
     return this.mc.sendReceive(`world.getBlock(${x},${y},${z})`)
-      .then(data => {
-        return Number(data);
-      });
-  };
+      .then(data => Number(data));
+  }
 
   /**
    * Returns the block ID and data at the selected coordinates.
@@ -53,10 +49,10 @@ class World {
         const parts = data.split(',');
         return {
           id: Number(parts[0]),
-          data: Number(parts[1])
+          data: Number(parts[1]),
         };
       });
-  };
+  }
 
   /**
    * Places a block with the ID of `id` at the selected coordinates, plus data if it is appended.
@@ -78,10 +74,10 @@ class World {
 
     if (data) {
       return this.mc.send(`world.setBlock(${x},${y},${z},${id},${data})`);
-    } else {
-      return this.mc.send(`world.setBlock(${x},${y},${z},${id})`);
     }
-  };
+
+    return this.mc.send(`world.setBlock(${x},${y},${z},${id})`);
+  }
 
   /**
    * Places a cuboid of blocks with the coordinate set using the specified id and data.
@@ -109,10 +105,10 @@ class World {
 
     if (data) {
       return this.mc.send(`world.setBlocks(${x1},${y1},${z1},${x2},${y2},${z2},${id},${data})`);
-    } else {
-      return this.mc.send(`world.setBlocks(${x1},${y1},${z1},${x2},${y2},${z2},${id})`);
     }
-  };
+
+    return this.mc.send(`world.setBlocks(${x1},${y1},${z1},${x2},${y2},${z2},${id})`);
+  }
 
   /**
    * Returns the Y coordinate of the last block that isn't solid from the top-down in the coordinate pair.
@@ -127,10 +123,8 @@ class World {
     assert(z !== undefined && z !== null, 'z is required');
 
     return this.mc.sendReceive(`world.getHeight(${x},${z})`)
-      .then(data => {
-        return Number(data);
-      });
-  };
+      .then(data => Number(data));
+  }
 
   /**
    * Saves a checkpoint that can be used to restore the world.

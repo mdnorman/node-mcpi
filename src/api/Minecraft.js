@@ -1,5 +1,3 @@
-'use strict';
-
 const assert = require('assert');
 
 const Connection = require('../server/Connection');
@@ -29,38 +27,38 @@ class Minecraft {
   }
 
   get camera() {
-    if (!this._camera) {
-      this._camera = new Camera(this);
+    if (!this.cameraObj) {
+      this.cameraObj = new Camera(this);
     }
-    return this._camera;
+    return this.cameraObj;
   }
 
   get chat() {
-    if (!this._chat) {
-      this._chat = new Chat(this);
+    if (!this.chatObj) {
+      this.chatObj = new Chat(this);
     }
-    return this._chat;
+    return this.chatObj;
   }
 
   get events() {
-    if (!this._events) {
-      this._events = new Events(this);
+    if (!this.eventsObj) {
+      this.eventsObj = new Events(this);
     }
-    return this._events;
+    return this.eventsObj;
   }
 
   get player() {
-    if (!this._player) {
-      this._player = new Player(this);
+    if (!this.playerObj) {
+      this.playerObj = new Player(this);
     }
-    return this._player;
+    return this.playerObj;
   }
 
   get world() {
-    if (!this._world) {
-      this._world = new World(this);
+    if (!this.worldObj) {
+      this.worldObj = new World(this);
     }
-    return this._world;
+    return this.worldObj;
   }
 
   // low-level
@@ -76,7 +74,7 @@ class Minecraft {
 
     // If you're wanting to write your own API, this makes sure commands are written end with a new line.
     // Without it, the commands will not work!
-    return this.connection.write(command + '\n');
+    return this.connection.write(`${command}\n`);
   }
 
   /**
@@ -88,9 +86,9 @@ class Minecraft {
    */
   sendReceive(command) {
     assert(command, 'command is required');
-    return this.connection.writeAndRead(command + '\n')
+    return this.connection.writeAndRead(`${command}\n`)
       .then(data => {
-        if (data == 'Fail\n') {
+        if (data === 'Fail\n') {
           throw Error(`Got Fail response for command: ${command}`);
         }
 

@@ -1,5 +1,3 @@
-'use strict';
-
 const jasmineConfig = {
   spec_dir: 'test',
   spec_files: [
@@ -25,8 +23,8 @@ const specReporterConfig = {
   customProcessors: [],
 };
 
-module.exports = { 
+module.exports = {
   jasmineConfig,
   specReporterConfig,
-  terminalConfig, 
+  terminalConfig,
 };

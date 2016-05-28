@@ -1,5 +1,3 @@
-'use strict';
-
 const Colors = {
   WHITE: 0,
   ORANGE: 1,

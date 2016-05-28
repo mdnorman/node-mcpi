@@ -11,11 +11,11 @@ module.exports = {
   },
 
   rules: {
-    strict: [ 2, "global" ],
+    strict: [ 'error', 'global' ],
     
-    'max-len': [2, 200, 2, {
+    'max-len': [ 'error', 200, 2, {
       'ignoreUrls': true,
-      'ignoreComments': false
+      'ignoreComments': false,
     }],
   },
 };
