@@ -7,8 +7,9 @@ describe('Set blocks', () => {
   it('setBlock', (done) => {
     const mc = helpers.mc();
     
-    mc.setBlock(0, 100, 0, mcpi.Blocks.SANDSTONE)
-      .then(() => mc.getBlockWithData(0, 100, 0))
+    helpers.clearArea(0, helpers.defaultHeight, 0, 10)
+      .then(() => mc.setBlock(0, helpers.defaultHeight, 0, mcpi.Blocks.SANDSTONE))
+      .then(() => mc.getBlockWithData(0, helpers.defaultHeight, 0))
       .then(receivedData => {
         expect(receivedData).not.toBeNull();
         expect(receivedData.id).toEqual(mcpi.Blocks.SANDSTONE);
@@ -25,8 +26,9 @@ describe('Set blocks', () => {
   it('setBlock with data', (done) => {
     const mc = helpers.mc();
 
-    mc.setBlock(10, 100, 0, mcpi.Blocks.SANDSTONE, mcpi.DataValues.Sandstone.Chiseled)
-      .then(() => mc.getBlockWithData(10, 100, 0))
+    helpers.clearArea(0, helpers.defaultHeight, 0, 10)
+      .then(() => mc.setBlock(10, helpers.defaultHeight, 0, mcpi.Blocks.SANDSTONE, mcpi.DataValues.Sandstone.Chiseled))
+      .then(() => mc.getBlockWithData(10, helpers.defaultHeight, 0))
       .then(receivedData => {
         expect(receivedData).not.toBeNull();
         expect(receivedData.id).toEqual(mcpi.Blocks.SANDSTONE);
@@ -43,20 +45,21 @@ describe('Set blocks', () => {
   it('setBlocks', (done) => {
     const mc = helpers.mc();
 
-    mc.setBlocks(100, 100, 100, 110, 110, 110, mcpi.Blocks.SANDSTONE)
-      .then(() => mc.getBlockWithData(100, 100, 100))
+    helpers.clearArea(0, helpers.defaultHeight, 0, 10)
+      .then(() => mc.setBlocks(0, helpers.defaultHeight, 0, 10, helpers.defaultHeight+10, 10, mcpi.Blocks.SANDSTONE))
+      .then(() => mc.getBlockWithData(0, helpers.defaultHeight, 0))
       .then(receivedData => {
         expect(receivedData).not.toBeNull();
         expect(receivedData.id).toEqual(mcpi.Blocks.SANDSTONE);
         expect(receivedData.data).toEqual(mcpi.DataValues.Sandstone.Normal);
       })
-      .then(() => mc.getBlockWithData(110, 110, 110))
+      .then(() => mc.getBlockWithData(10, helpers.defaultHeight+10, 10))
       .then(receivedData => {
         expect(receivedData).not.toBeNull();
         expect(receivedData.id).toEqual(mcpi.Blocks.SANDSTONE);
         expect(receivedData.data).toEqual(mcpi.DataValues.Sandstone.Normal);
       })
-      .then(() => mc.getBlockWithData(105, 105, 105))
+      .then(() => mc.getBlockWithData(5, helpers.defaultHeight+5, 5))
       .then(receivedData => {
         expect(receivedData).not.toBeNull();
         expect(receivedData.id).toEqual(mcpi.Blocks.SANDSTONE);
@@ -73,20 +76,21 @@ describe('Set blocks', () => {
   it('setBlocks with data', (done) => {
     const mc = helpers.mc();
 
-    mc.setBlocks(200, 100, 200, 210, 110, 210, mcpi.Blocks.SANDSTONE, mcpi.DataValues.Sandstone.Chiseled)
-      .then(() => mc.getBlockWithData(200, 100, 200))
+    helpers.clearArea(0, helpers.defaultHeight, 0, 10)
+      .then(() => mc.setBlocks(0, helpers.defaultHeight, 0, 10, helpers.defaultHeight+10, 10, mcpi.Blocks.SANDSTONE, mcpi.DataValues.Sandstone.Chiseled))
+      .then(() => mc.getBlockWithData(0, helpers.defaultHeight, 0))
       .then(receivedData => {
         expect(receivedData).not.toBeNull();
         expect(receivedData.id).toEqual(mcpi.Blocks.SANDSTONE);
         expect(receivedData.data).toEqual(mcpi.DataValues.Sandstone.Chiseled);
       })
-      .then(() => mc.getBlockWithData(210, 110, 210))
+      .then(() => mc.getBlockWithData(10, helpers.defaultHeight+10, 10))
       .then(receivedData => {
         expect(receivedData).not.toBeNull();
         expect(receivedData.id).toEqual(mcpi.Blocks.SANDSTONE);
         expect(receivedData.data).toEqual(mcpi.DataValues.Sandstone.Chiseled);
       })
-      .then(() => mc.getBlockWithData(205, 105, 205))
+      .then(() => mc.getBlockWithData(5, helpers.defaultHeight+5, 5))
       .then(receivedData => {
         expect(receivedData).not.toBeNull();
         expect(receivedData.id).toEqual(mcpi.Blocks.SANDSTONE);
