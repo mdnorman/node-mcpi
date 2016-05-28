@@ -4,11 +4,11 @@ const mcpi = require('../../lib/minecraft.js');
 const helpers = require('../utils/helpers');
 
 describe('World', () => {
-  it('getWorldSetting', (done) => {
+  it('setWorldSetting', (done) => {
     const mc = helpers.mc();
 
-    mc.setWorldSetting('world_immutable', true)
-      .then(() => mc.setWorldSetting('world_immutable', false))
+    mc.setWorldSetting(mcpi.WorldSettings.WorldImmutable, true)
+      .then(() => mc.setWorldSetting(mcpi.WorldSettings.WorldImmutable, false))
       .then(() => mc.close())
       .then(done)
       .catch(err => {

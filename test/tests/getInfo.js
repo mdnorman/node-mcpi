@@ -7,12 +7,12 @@ describe('Get info', () => {
   it('getHeight', (done) => {
     const mc = helpers.mc();
 
-    helpers.clearArea(0, helpers.defaultHeight, 0, 10)
-      .then(() => mc.setBlock(0, helpers.defaultHeight + 5, 0, mcpi.Blocks.STONE))
+    helpers.clearArea(mc, 0, 100, 0, 10)
+      .then(() => mc.setBlock(0, 105, 0, mcpi.Blocks.STONE))
       .then(() => mc.getHeight(0, 0))
       .then(height => {
         expect(height).not.toBeNull();
-        expect(height).toEqual(helpers.defaultHeight + 6);
+        expect(height).toEqual(106);
       })
       .then(() => mc.close())
       .then(done)

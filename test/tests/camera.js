@@ -18,7 +18,7 @@ describe('Camera', () => {
   it('setCameraPos', (done) => {
     const mc = helpers.mc();
     mc.setCameraMode(mcpi.CameraModes.ThirdPerson)
-      .then(() => mc.setCameraPos(0, helpers.defaultHeight, 0))
+      .then(() => mc.setCameraPos(0, 0, 0))
       .then(() => mc.close())
       .then(done)
       .catch(err => {
