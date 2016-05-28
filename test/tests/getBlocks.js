@@ -9,8 +9,8 @@ describe('Get blocks', () => {
     mc.getBlockWithData(99999, 99999, 99999)
       .then(receivedData => {
         expect(receivedData).not.toBeNull();
-        expect(receivedData.blockId).toEqual(0);
-        expect(receivedData.dataValue).toEqual(0);
+        expect(receivedData.id).toEqual(0);
+        expect(receivedData.data).toEqual(0);
       })
       .then(() => mc.close())
       .then(done)

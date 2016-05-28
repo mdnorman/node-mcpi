@@ -1,6 +1,6 @@
 'use strict';
 
-const Minecraft = require('../../lib/minecraft.js');
+const Minecraft = require('../../lib/minecraft.js').Minecraft;
 
 const minecraftServerName = 'localhost';
 const minecraftServerPort = 4711;
