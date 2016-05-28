@@ -20,12 +20,7 @@ mcpi allows you to control [Minecraft: Raspberry Pi edition](http://pi.minecraft
       .then(() => {
         mc.end();
       });
+      
+### Debug logs
 
-### Documentation
-
-```bash
-npm run doc
-open tmp/docs/minecraft.html
-```
-
-You may also view pre-generated documentation [here](http://mdnorman.github.io/mcpi/).
+To turn on debug logging, run your program with NODE_DEBUG set to `mcpi`
