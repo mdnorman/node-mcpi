@@ -5,7 +5,7 @@ const helpers = require('../utils/helpers');
 describe('Chat', () => {
   it('hello', (done) => {
     const mc = helpers.mc();
-    mc.send('hello')
+    mc.chat('hello')
       .then(() => mc.close())
       .then(done)
       .catch(err => {
