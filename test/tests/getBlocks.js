@@ -7,9 +7,9 @@ describe('Get blocks', () => {
     const mc = helpers.mc();
 
     mc.getBlock(99999, 99999, 99999)
-      .then(receivedData => {
-        expect(receivedData).not.toBeNull();
-        expect(receivedData).toEqual(0);
+      .then(blockId => {
+        expect(blockId).not.toBeNull();
+        expect(blockId).toEqual(0);
       })
       .then(() => mc.close())
       .then(done)
@@ -23,10 +23,10 @@ describe('Get blocks', () => {
     const mc = helpers.mc();
 
     mc.getBlockWithData(99999, 99999, 99999)
-      .then(receivedData => {
-        expect(receivedData).not.toBeNull();
-        expect(receivedData.id).toEqual(0);
-        expect(receivedData.data).toEqual(0);
+      .then(block => {
+        expect(block).not.toBeNull();
+        expect(block.id).toEqual(0);
+        expect(block.data).toEqual(0);
       })
       .then(() => mc.close())
       .then(done)
