@@ -16,7 +16,7 @@
   "scripts": {
     "checkstyle": "./node_modules/.bin/eslint ./",
     "test": "node $NODE_DEBUG_OPTION ./test/index.js",
-    "prepublish": "npm run checkstyle && npm test"
+    "prepublish": "npm run checkstyle && npm test && npm version patch"
   },
   "dependencies": {},
   "devDependencies": {
