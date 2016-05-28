@@ -4,6 +4,12 @@ const assert = require('assert');
 
 const Connection = require('../server/Connection');
 
+const Camera = require('./Camera');
+const Chat = require('./Chat');
+const Events = require('./Events');
+const Player = require('./Player');
+const World = require('./World');
+
 class Minecraft {
   /**
    * Constructs a new Minecraft object.
@@ -20,6 +26,41 @@ class Minecraft {
 
     // When a new `Minecraft` is created, it connects to the port and host given.
     this.connection = new Connection(host, port);
+  }
+
+  get camera() {
+    if (!this._camera) {
+      this._camera = new Camera(this);
+    }
+    return this._camera;
+  }
+
+  get chat() {
+    if (!this._chat) {
+      this._chat = new Chat(this);
+    }
+    return this._chat;
+  }
+
+  get events() {
+    if (!this._events) {
+      this._events = new Events(this);
+    }
+    return this._events;
+  }
+
+  get player() {
+    if (!this._player) {
+      this._player = new Player(this);
+    }
+    return this._player;
+  }
+
+  get world() {
+    if (!this._world) {
+      this._world = new World(this);
+    }
+    return this._world;
   }
 
   // low-level
@@ -203,18 +244,7 @@ class Minecraft {
     return this.send('world.checkpoint.restore()');
   }
 
-  /**
-   * Displays a message in the chat.
-   *
-   * @param {string} message the message
-   * @returns {Promise}
-   */
-  chat(message) {
-    assert(message, 'message is required');
-    return this.send(`chat.post(${message})`);
-  }
-
-// ### World Commands
+  // ### World Commands
   /**
    * Sets a world property.
    *

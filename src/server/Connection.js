@@ -6,7 +6,7 @@ const util = require('util');
 
 const debuglog = util.debuglog('mcpi');
 
-  /**
+/**
  * A promisified connection to a server
  */
 class Connection {
@@ -16,11 +16,12 @@ class Connection {
    * @param {string} host the host
    * @param {number} port the port
    */
-  constructor (host, port) {
+  constructor(host, port) {
     assert(host, 'host is required');
     assert(port, 'port is required');
 
     this._callbacks = [];
+    this._isClosed = false;
 
     const self = this;
     this._promise = new Promise((resolve, reject) => {
@@ -43,6 +44,7 @@ class Connection {
 
   write(data) {
     assert(data, 'data is required');
+    assert(!this.closed, 'connection is closed');
 
     const self = this;
     return this._promise.then(socket => {
@@ -63,6 +65,7 @@ class Connection {
 
   writeAndRead(data) {
     assert(data, 'command is required');
+    assert(!this.closed, 'connection is closed');
 
     const self = this;
     return this._promise.then(socket => {
@@ -78,14 +81,14 @@ class Connection {
       });
     })
   }
-  
+
   _pushPromiseCallback(resolve, reject) {
     this._callbacks.push((err, data) => {
       if (err) {
         reject(err);
         return;
       }
-      
+
       resolve(data.toString());
     });
   }
@@ -117,8 +120,18 @@ class Connection {
     });
   };
 
+  get closed() {
+    return this._isClosed;
+  }
+
   close() {
+    if (this.closed) {
+      return Promise.resolve();
+    }
+    
+    const self = this;
     return this._promise.then(socket => {
+      self._isClosed = true;
       socket.end();
     });
   }

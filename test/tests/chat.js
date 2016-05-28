@@ -2,10 +2,10 @@
 
 const helpers = require('../utils/helpers');
 
-describe('Chat', () => {
+describe('World', () => {
   it('hello', (done) => {
     const mc = helpers.mc();
-    mc.chat('hello')
+    mc.chat.post('hello')
       .then(() => mc.close())
       .then(done)
       .catch(err => {
