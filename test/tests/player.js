@@ -7,7 +7,7 @@ describe('Player', () => {
   it('getTilePos', (done) => {
     const mc = helpers.mc();
 
-    mc.getTilePos()
+    mc.player.getTilePos()
       .then(pos => {
         expect(pos).not.toBeNull();
         expect(pos.x).not.toBeNull();
@@ -27,16 +27,16 @@ describe('Player', () => {
 
     helpers.clearArea(mc, 0, 0, 0, 5)
       .then(() => mc.setBlocks(-5, 0-1, -5, 5, 0-1, 5, mcpi.Blocks.STONE))
-      .then(() => mc.setTilePos(0, 0, 0))
-      .then(() => mc.getTilePos())
+      .then(() => mc.player.setTilePos(0, 0, 0))
+      .then(() => mc.player.getTilePos())
       .then(pos => {
         expect(pos).not.toBeNull();
         expect(pos.x).toEqual(0);
         expect(pos.y).toEqual(0);
         expect(pos.z).toEqual(0);
       })
-      .then(() => mc.setTilePos(2, 0, 2))
-      .then(() => mc.getTilePos())
+      .then(() => mc.player.setTilePos(2, 0, 2))
+      .then(() => mc.player.getTilePos())
       .then(pos => {
         expect(pos).not.toBeNull();
         expect(pos.x).toEqual(2);
@@ -54,7 +54,7 @@ describe('Player', () => {
   it('getPos', (done) => {
     const mc = helpers.mc();
 
-    mc.getPos()
+    mc.player.getPos()
       .then(pos => {
         expect(pos).not.toBeNull();
         expect(pos.x).not.toBeNull();
@@ -74,16 +74,16 @@ describe('Player', () => {
 
     helpers.clearArea(mc, 0, 0, 0, 5)
       .then(() => mc.setBlocks(-5, 0-1, -5, 5, 0-1, 5, mcpi.Blocks.STONE))
-      .then(() => mc.setPos(0, 0, 0))
-      .then(() => mc.getPos())
+      .then(() => mc.player.setPos(0, 0, 0))
+      .then(() => mc.player.getPos())
       .then(pos => {
         expect(pos).not.toBeNull();
         expect(pos.x).toEqual(0);
         expect(pos.y).toEqual(0);
         expect(pos.z).toEqual(0);
       })
-      .then(() => mc.setPos(2.5, 0, 2.5))
-      .then(() => mc.getPos())
+      .then(() => mc.player.setPos(2.5, 0, 2.5))
+      .then(() => mc.player.getPos())
       .then(pos => {
         expect(pos).not.toBeNull();
         expect(pos.x).toEqual(2.5);
@@ -98,11 +98,11 @@ describe('Player', () => {
       });
   });
 
-  it('setPlayerSetting', (done) => {
+  it('set', (done) => {
     const mc = helpers.mc();
 
-    mc.setPlayerSetting(mcpi.PlayerSettings.AutoJump, true)
-      .then(() => mc.setPlayerSetting(mcpi.PlayerSettings.AutoJump, false))
+    mc.player.setProperty(mcpi.PlayerSettings.AutoJump, true)
+      .then(() => mc.player.setProperty(mcpi.PlayerSettings.AutoJump, false))
       .then(() => mc.close())
       .then(done)
       .catch(err => {
