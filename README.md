@@ -1,4 +1,4 @@
-## ![mcpi](https://raw.github.com/mdnorman/mcpi/master/minecraft-pi.png)
+## ![mcpi](https://raw.github.com/mdnorman/node-mcpi/master/minecraft-pi.png)
 
 mcpi allows you to control [Minecraft: Raspberry Pi edition](http://pi.minecraft.net/) server from Node.js. This is intended as a lower-level module, and is meant to be extended on for bigger projects. However, the commands are simple enough to play with as-is.
 
