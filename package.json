@@ -15,7 +15,8 @@
   "main": "./src/index.js",
   "scripts": {
     "checkstyle": "./node_modules/.bin/eslint ./",
-    "test": "node $NODE_DEBUG_OPTION ./test/index.js"
+    "test": "node $NODE_DEBUG_OPTION ./test/index.js",
+    "prepublish": "npm run checkstyle && npm test"
   },
   "dependencies": {},
   "devDependencies": {
