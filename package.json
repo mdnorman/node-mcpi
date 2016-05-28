@@ -12,16 +12,14 @@
   "bugs": {
     "url": "https://github.com/mdnorman/mcpi/issues"
   },
-  "main": "./lib/minecraft.js",
+  "main": "./src/index.js",
   "scripts": {
     "checkstyle": "./node_modules/.bin/eslint ./",
-    "doc": "./node_modules/.bin/docco -o tmp/docs lib/minecraft.js",
     "test": "node $NODE_DEBUG_OPTION ./test/index.js"
   },
   "dependencies": {
   },
   "devDependencies": {
-    "docco": "^0.7.0",
     "eslint": "^2.10.2",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-react": "^5.1.1",

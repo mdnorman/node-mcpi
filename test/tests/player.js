@@ -1,7 +1,7 @@
 'use strict';
 
 const helpers = require('../utils/helpers');
-const mcpi = require('../../lib/minecraft');
+const mcpi = require('../../src/');
 
 describe('Player', () => {
   it('getTilePos', (done) => {

@@ -2,7 +2,7 @@
 
 const helpers = require('../utils/helpers');
 
-const Minecraft = require('../../lib/minecraft.js').Minecraft;
+const Minecraft = require('../../src/').Minecraft;
 
 describe('Connection', () => {
   it('success', (done) => {

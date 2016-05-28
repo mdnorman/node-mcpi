@@ -1,6 +1,6 @@
 'use strict';
 
-const mcpi = require('../../lib/minecraft.js');
+const mcpi = require('../../src/');
 const helpers = require('../utils/helpers');
 
 describe('Events', () => {

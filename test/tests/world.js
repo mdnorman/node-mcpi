@@ -1,7 +1,7 @@
 'use strict';
 
-const mcpi = require('../../lib/minecraft.js');
 const helpers = require('../utils/helpers');
+const mcpi = require('../../src/');
 
 describe('World', () => {
   it('setWorldSetting', (done) => {

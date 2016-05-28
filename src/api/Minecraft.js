@@ -1,17 +1,8 @@
 'use strict';
 
 const assert = require('assert');
-const net = require('net');
-const os = require('os');
 
-const Blocks = require('./constants/blocks');
-const CameraModes = require('./constants/cameraModes');
-const Colors = require('./constants/colors');
-const DataValues = require('./constants/dataValues');
-const PlayerSettings = require('./constants/playerSettings');
-const WorldSettings = require('./constants/worldSettings');
-
-const Connection = require('./server/Connection');
+const Connection = require('../server/Connection');
 
 class Minecraft {
   /**
@@ -41,7 +32,7 @@ class Minecraft {
    */
   send(command) {
     assert(command, 'command is required');
-    
+
     // If you're wanting to write your own API, this makes sure commands are written end with a new line.
     // Without it, the commands will not work!
     return this.connection.write(command + '\n');
@@ -214,7 +205,7 @@ class Minecraft {
 
   /**
    * Displays a message in the chat.
-   * 
+   *
    * @param {string} message the message
    * @returns {Promise}
    */
@@ -226,7 +217,7 @@ class Minecraft {
 // ### World Commands
   /**
    * Sets a world property.
-   * 
+   *
    * Values are boolean, 0 or 1.
    *
    * @param {WorldSettings} key
@@ -254,21 +245,21 @@ class Minecraft {
    * Sets the player's camera mode.
    *
    * @param {CameraModes} cameraMode
-   * 
+   *
    * @returns {Promise}
    */
   setCameraMode(cameraMode) {
     assert(cameraMode, 'cameraMode is required');
     return this.send(`camera.mode.set${cameraMode}()`);
   }
-  
+
   /**
    * Sets the camera's position at the selected coordinates.
    *
    * @param {number} x
    * @param {number} y
    * @param {number} z
-   * 
+   *
    * @returns {Promise}
    */
   setCameraPos(x, y, z) {
@@ -299,11 +290,11 @@ class Minecraft {
 
   /**
    * Sets the player's coordinates to the specified block.
-   * 
+   *
    * @param x
    * @param y
    * @param z
-   * 
+   *
    * @returns {Promise}
    */
   setTilePos(x, y, z) {
@@ -313,7 +304,7 @@ class Minecraft {
 
     return this.send(`player.setTile(${x},${y},${z})`);
   }
-  
+
   /**
    * Gets the precise position of the player.
    *
@@ -333,11 +324,11 @@ class Minecraft {
 
   /**
    * Sets the position of the player precisely.
-   * 
+   *
    * @param x
    * @param y
    * @param z
-   * 
+   *
    * @returns {Promise}
    */
   setPos(x, y, z) {
@@ -350,12 +341,12 @@ class Minecraft {
 
   /**
    * Sets a player property.
-   * 
+   *
    * Values are boolean, 0 or 1.
-   * 
+   *
    * @param {PlayerSettings} key
    * @param {*} value
-   * 
+   *
    * @returns {Promise}
    */
   setPlayerSetting(key, value) {
@@ -368,18 +359,10 @@ class Minecraft {
   eventsBlockHits() {
     return this.sendReceive('events.block.hits()');
   }
-  
+
   eventsClear() {
     return this.send('events.clear()');
   }
 }
 
-module.exports = {
-  Minecraft,
-  Blocks,
-  CameraModes,
-  Colors,
-  DataValues,
-  PlayerSettings,
-  WorldSettings,
-};
+module.exports = Minecraft;
