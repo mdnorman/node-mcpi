@@ -10,7 +10,7 @@ mcpi allows you to control [Minecraft: Raspberry Pi edition](http://pi.minecraft
     // Use the mc variable to play with the server!
     mc.chat('Yo dawg, I heard you like Node.js, so I put some Node.js in your Pi so you can Node.js while you Pi.');
     mc.setBlock(3, 14, 15, mc.blocks['DIAMOND_BLOCK']);
-    mc.end();
+    mc.close();
     
     // Use the returned promises to wait for results
     mc.getBlock(3, 14, 15)
@@ -18,7 +18,7 @@ mcpi allows you to control [Minecraft: Raspberry Pi edition](http://pi.minecraft
         console.log('blockId:', block.id);
       })
       .then(() => {
-        mc.end();
+        mc.close();
       });
       
 ### Debug logs
