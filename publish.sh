@@ -1,3 +1,3 @@
 #!/bin/bash
 
-npm publish && npm version $1 && git push
+npm version $1 && npm publish && git push
