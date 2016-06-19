@@ -24,7 +24,7 @@ describe('Player', () => {
     const mc = helpers.mc();
 
     helpers.clearArea(mc, 0, 0, 0, 5)
-      .then(() => mc.world.setBlocks(-5, -1, -5, 5, -1, 5, mcpi.Blocks.STONE))
+      .then(() => mc.world.setBlocks(-5, -1, -5, 5, -1, 5, mcpi.Blocks.Stone))
       .then(() => mc.player.setTilePos(0, 0, 0))
       .then(() => mc.player.getTilePos())
       .then(pos => {
@@ -71,7 +71,7 @@ describe('Player', () => {
     const mc = helpers.mc();
 
     helpers.clearArea(mc, 0, 0, 0, 5)
-      .then(() => mc.world.setBlocks(-5, -1, -5, 5, -1, 5, mcpi.Blocks.STONE))
+      .then(() => mc.world.setBlocks(-5, -1, -5, 5, -1, 5, mcpi.Blocks.Stone))
       .then(() => mc.player.setPos(0, 0, 0))
       .then(() => mc.player.getPos())
       .then(pos => {

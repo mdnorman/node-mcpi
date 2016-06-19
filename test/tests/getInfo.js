@@ -6,7 +6,7 @@ describe('Get info', () => {
     const mc = helpers.mc();
 
     helpers.clearArea(mc, 0, 100, 0, 10)
-      .then(() => mc.world.setBlock(0, 105, 0, mcpi.Blocks.STONE))
+      .then(() => mc.world.setBlock(0, 105, 0, mcpi.Blocks.Stone))
       .then(() => mc.world.getHeight(0, 0))
       .then(height => {
         expect(height).not.toBeNull();
