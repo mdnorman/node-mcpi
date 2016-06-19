@@ -3,7 +3,7 @@
   "name": "mcpi",
   "description": "Node.js API with Promises for Minecraft Raspberry Pi edition",
   "license": "MIT",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "homepage": "https://github.com/mdnorman/node-mcpi",
   "repository": {
     "type": "git",
