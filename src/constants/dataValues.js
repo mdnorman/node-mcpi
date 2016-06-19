@@ -7,9 +7,9 @@ const Coal = {
   Charcoal: 1,
 };
 
-const GlassPane = Colors;
+const StainedGlassPane = Colors;
 
-const HardenedClay = Colors;
+const StainedHardenedClay = Colors;
 
 const Sandstone = {
   Normal,
@@ -22,8 +22,8 @@ const Wool = Colors;
 module.exports = {
   Normal,
   Coal,
-  GlassPane,
-  HardenedClay,
+  StainedGlassPane,
+  StainedHardenedClay,
   Sandstone,
   Wool,
 };

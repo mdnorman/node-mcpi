@@ -66,6 +66,9 @@ const Blocks = {
   GlassPane: 102,
   Melon: 103,
   FenceGate: 107,
+  StainedHardenedClay: 159,
+  StainedGlassPane: 160,
+  HardenedClay: 172,
   GlowingObsidian: 246,
   NetherReactorCore: 247,
 
